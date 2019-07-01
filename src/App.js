@@ -1,6 +1,7 @@
 import React from 'react';
 import Todos from './Todos';
 import Add from './Add';
+import { tsAnyKeyword } from '@babel/types';
 
 class App extends React.Component {
   state = {
@@ -57,11 +58,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="col-md-4 offset-md-3 bg-light p-2 mt-5 shadow-sm">
-        <h4>Todo</h4>
-        <Add addData={this.addData} />
-        <Todos todoList={this.state.todos} del={() => this.del} isComplete={() => this.isComplete} />
-      </div>
+      <>
+        <div className="col-md-4 offset-md-3 bg-light p-2 mt-5 shadow-sm">
+          <h4>Todo</h4>
+          <Add addData={this.addData} />
+          <Todos todoList={this.state.todos} del={() => this.del} isComplete={() => this.isComplete} />
+        </div>
+        <div className="row mt-3">
+          <div className="col-md-4 offset-md-3 p-2">
+            <p className="text-info">Note : Checkbox checked is the mark as completed Task.</p>
+          </div>
+        </div>
+      </>
     )
   }
 }
